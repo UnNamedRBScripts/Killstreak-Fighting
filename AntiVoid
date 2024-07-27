@@ -8,7 +8,7 @@ local teleportPosition = Vector3.new(-0.76, 293.09, -310.20)  -- Updated telepor
 local function placeBlock(position)
     -- Create a new Part
     local block = Instance.new("Part")
-    block.Size = Vector3.new(99999999999, 4, 99999999999)  -- Set the size of the block (reasonable size)
+    block.Size = Vector3.new(9999999999999999999, 4, 99999999999999999999)  -- Set the size of the block (reasonable size)
     block.Position = position  -- Set the position of the block
     block.Anchored = true  -- Make sure the block doesn't fall
     block.Transparency = 1  -- Make the block invisible
