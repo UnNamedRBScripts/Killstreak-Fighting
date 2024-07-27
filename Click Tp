@@ -1,0 +1,38 @@
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+
+-- Tool 1: Simple Teleport Tool
+local tool1 = Instance.new("Tool")
+tool1.RequiresHandle = false
+tool1.Name = "Click TP"
+tool1.Activated:Connect(function()
+    local mouse = Players.LocalPlayer:GetMouse()
+    local pos = mouse.Hit + Vector3.new(0, 2.5, 0)
+    pos = CFrame.new(pos.X, pos.Y, pos.Z)
+    Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end)
+tool1.Parent = Players.LocalPlayer.Backpack
+
+-- Tool 2: Tween Teleport Tool
+local tool2 = Instance.new("Tool")
+tool2.RequiresHandle = false
+tool2.Name = "Tween Click TP"
+tool2.Activated:Connect(function()
+    local mouse = Players.LocalPlayer:GetMouse()
+    local pos = mouse.Hit + Vector3.new(0, 2.5, 0)
+    local humanoidRootPart = Players.LocalPlayer.Character.HumanoidRootPart
+    
+    local tweenInfo = TweenInfo.new(
+        1, -- Time in seconds
+        Enum.EasingStyle.Quad,
+        Enum.EasingDirection.Out
+    )
+    
+    local tween = TweenService:Create(humanoidRootPart, tweenInfo, {
+        CFrame = CFrame.new(pos.X, pos.Y, pos.Z)
+    })
+    
+    tween:Play()
+end)
+tool2.Parent = Players.LocalPlayer.Backpack
